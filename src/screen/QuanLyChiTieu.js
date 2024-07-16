@@ -1,11 +1,15 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react/react-in-jsx-scope */
 import {useDispatch, useSelector} from 'react-redux';
-import {addTodo} from '../redux/reducers/todoReducer';
 import {Button, ScrollView, Text, TextInput, View} from 'react-native';
 import {useState} from 'react';
 import {AppButton} from '../Lab/Lab1/app-button';
-import {deleteThuChi} from '../redux/reducers/storeThuChi';
+import {
+  addThuChi,
+  deleteThuChi,
+  updateThuChi,
+} from '../redux/reducers/storeThuChi';
+import {AppTouchableOpacity} from '../Lab/Lab1/app-touchable-opacity';
 const QuanLyChiTieu = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
@@ -15,7 +19,7 @@ const QuanLyChiTieu = () => {
   const [price, setPrice] = useState('');
   const [search, setSearch] = useState('');
 
-  const listTodo = useSelector(state => state.listTodo.listTodo);
+  const listThuChi = useSelector(state => state.listThuChi.listThuChi);
   const dispatch = useDispatch();
   const handleAddTodo = () => {
     let duLieuThem = {
@@ -27,13 +31,25 @@ const QuanLyChiTieu = () => {
       loaiThu,
       price,
     };
-    dispatch(addTodo(duLieuThem));
+    dispatch(addThuChi(duLieuThem));
   };
-  const filteredListTodo = listTodo.filter(item =>
+  const filteredListTodo = listThuChi.filter(item =>
     item.title.toLowerCase().includes(search.toLowerCase()),
   );
   const handleDeleteThuChi = id => {
     dispatch(deleteThuChi(id));
+  };
+  const handleUpdateThuChi = (id) => {
+    let duLieuCapNhat = {
+      id,
+      title,
+      content,
+      tienThu,
+      ngayThu,
+      loaiThu,
+      price,
+    };
+    dispatch(updateThuChi(duLieuCapNhat));
   };
 
   return (
@@ -79,9 +95,10 @@ const QuanLyChiTieu = () => {
           Danh sách thu chi:
         </Text>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          {listTodo.map(column => (
-            <View
+          {listThuChi.map(column => (
+            <AppTouchableOpacity
               key={column.id}
+              onPress={handleUpdateThuChi}
               style={{
                 padding: 10,
                 margin: 10,
@@ -109,7 +126,7 @@ const QuanLyChiTieu = () => {
                 onPress={() => handleDeleteThuChi(column.id)}
                 color="red"
               />
-            </View>
+            </AppTouchableOpacity>
           ))}
         </ScrollView>
       </View>

@@ -15,8 +15,17 @@ const quanLyThuChiSlice = createSlice({
         item => item.id !== action.payload,
       );
     },
+    updateThuChi(state, action) {
+      const index = state.listThuChi.findIndex(
+        item => item.id === action.payload.id,
+      );
+      if (index !== -1) {
+        state.listThuChi[index] = action.payload;
+      }
+    },
   },
 });
 
-export const {addThuChi, deleteThuChi} = quanLyThuChiSlice.actions;
+export const {addThuChi, deleteThuChi, updateThuChi} =
+  quanLyThuChiSlice.actions;
 export default quanLyThuChiSlice.reducer;
