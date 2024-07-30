@@ -3,13 +3,13 @@
 import {useDispatch, useSelector} from 'react-redux';
 import {Button, ScrollView, Text, TextInput, View} from 'react-native';
 import {useState} from 'react';
-import {AppButton} from '../Lab/Lab1/app-button';
+import {AppButton} from '../../Lab/Lab1/app-button';
 import {
   addThuChi,
   deleteThuChi,
   updateThuChi,
-} from '../redux/reducers/storeThuChi';
-import {AppTouchableOpacity} from '../Lab/Lab1/app-touchable-opacity';
+} from './redux/reducers/storeThuChi';
+import {AppTouchableOpacity} from '../../Lab/Lab1/app-touchable-opacity';
 const QuanLyChiTieu = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');

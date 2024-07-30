@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react/react-in-jsx-scope */
 import {useDispatch, useSelector} from 'react-redux';
-import {addTodo} from '../redux/reducers/todoReducer';
+import {addTodo} from './redux/reducers/todoReducer';
 import {Button, Text, TextInput, View} from 'react-native';
 import {useState} from 'react';
 const TodoScreen = () => {
