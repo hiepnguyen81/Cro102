@@ -15,10 +15,13 @@ import store from './src/screen/ReduxNoAPI/redux/store';
 import QuanLyChiTieu from './src/screen/ReduxNoAPI/QuanLyChiTieu';
 import Index from './src/screen/ImagePicker';
 import Music from './src/screen/PlayMusic/Music';
+import StartAnimation from './src/screen/Animation/start-animation';
+import WithTiming from './src/screen/Animation/with-timing';
+import TestWithTiming from './src/screen/Animation/test-with-timing';
 
 const App = () => {
   return (
-    <SafeAreaView>
+    <>
       {/* <Vidu/> */}
       {/* <ViduHam/> */}
       {/* <UseEffect/> */}
@@ -32,8 +35,11 @@ const App = () => {
         <QuanLyChiTieu />
       </Provider> */}
       {/* <Index /> */}
-      <Music />
-    </SafeAreaView>
+      {/* <Music /> */}
+      {/* <StartAnimation /> */}
+      {/* <WithTiming width={110} /> */}
+      <TestWithTiming width={400} />
+    </>
   );
 };
 
